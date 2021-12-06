@@ -1,0 +1,21 @@
+#include<stdio.h>
+main()
+{
+    int a[3],b[3],i,j,aa=0,bb=0;
+    for(i=0;i<3;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<3;i++)
+    {
+        scanf("%d",&b[i]);
+    }
+    for(i=0;i<3;i++)
+    {
+        if(a[i]>b[i])
+        aa++;
+        else if(a[i]<b[i])
+        bb++;
+    }
+    printf("%d %d",aa,bb);
+}
