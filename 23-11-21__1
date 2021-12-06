@@ -1,0 +1,43 @@
+#include<stdio.h>
+struct person
+{
+    char name[1000];
+    int fq;
+};
+main()
+{
+    int n,i,j,k,t;
+    scanf("%d %d",&n,&t);
+    struct person arr[1000],l;
+    for(i=0;i<n;i++)
+    {
+        scanf("%s %d",&arr[i].name,&arr[i].fq);
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(arr[j].fq>arr[i].fq)
+            {
+                l=arr[j];
+                arr[j]=arr[i];
+                arr[i]=l;
+            }
+            if((arr[j].fq==arr[i].fq))
+            {
+                k=strcmp(arr[j].name,arr[i].name);
+                if(k<0)
+                {
+                    l=arr[j];
+                    arr[j]=arr[i];
+                    arr[i]=l;
+                }
+            }
+        }
+    }
+    for(i=0;i<t;i++)
+    {
+        printf("%s\n",arr[i].name);
+    }
+
+}
