@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* next;
+};
+void print(struct node* i)
+{
+    
+    while(i!=NULL)
+    {
+        printf("%d\n",i->data);
+        i=i->next;//passing the address of next list
+    }
+}
+
+
+int main()
+{
+    struct node* arr[100];
+    printf("enter no.of elements in list:");
+    int n,i,j,t;
+    scanf("%d",&n);
+    for(i=0;i<n+1;i++)
+    {
+        arr[i]=(struct node*)malloc(sizeof(struct node));
+    }
+    printf("enter %d elements:",n);
+    for(i=0;i<n;i++)
+    {
+        int te;
+        scanf("%d",&te);
+        arr[i]->data=te;
+        if(i<=n-1)
+        arr[i]->next=arr[i+1];
+        else if(i==n-1)
+        arr[i]->next=NULL;
+    }
+    int a,p;
+    printf("enter element to be inserted:");
+    scanf("%d",&a);
+    printf("enter position to be inserted:");
+    scanf("%d",&p);
+    printf("actual list=\n");
+    print(arr[0]);
+    
+    for(j=n;j<p-1;j--)
+    {
+        arr[j]->data=arr[j-1]->data;
+        if(j==n)
+        arr[j]->next=NULL;
+        else
+        arr[j]->next=arr[j-1]->next;
+    }
+    //arr[p-1]->data=a;
+    //arr[p-1]->next=arr[p]->next;
+    printf("inserted list=\n");
+    print(arr[0]);
+    return 0;
+}
+
