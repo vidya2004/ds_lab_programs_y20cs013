@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* next;
+};
+void print(struct node* i)
+{
+    /*if memory allocation is not done i.e, if program did not execute from step 23.
+    then from step 20 init is NULL. Hence in while loop first we should check 
+    if i!=NULL or not*/
+    while(i!=NULL)
+    {
+        printf("%d\n",i->data);
+        i=i->next;//passing the address of next list
+    }
+}
+int main()
+{
+    struct node* init=NULL;
+    struct node* sec=NULL;
+    struct node* three=NULL;
+    init=(struct node*)malloc(sizeof(struct node));
+    sec=(struct node*)malloc(sizeof(struct node));
+    three=(struct node*)malloc(sizeof(struct node));
+    init->data=1;
+    init->next=sec;
+    sec->data=2;
+    sec->next=three;
+    three->data=3;
+    three->next=NULL;
+    print(init);
+    return 0;
+}
